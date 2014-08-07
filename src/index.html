@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My App</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+        <link rel="stylesheet" href="style/app.min.css">
+        <link rel="stylesheet" href="style/custom.css">
+    </head>
+
+    <body>
+        <div class="app-page" data-page="home">
+            <div class="app-topbar">
+                <div class="app-title">法律文库</div>
+            </div>
+            <div class="app-content">
+                <!-- <div class="app-section"> -->
+                    <ul class="app-list">
+                    </ul>
+                <!-- </div> -->
+            </div>
+        </div>
+
+        <div class="app-page" data-page="detail">
+            <div class="app-topbar">
+                <div class="app-button left" data-back>返回</div>
+                <div class="app-title"></div>
+            </div>
+            <div class="app-content">
+                Page 2 is lonely
+            </div>
+        </div>
+        <script>
+            window.MSA = {};
+        </script>
+        <script src="script/lib/zepto.js"></script>
+        <script src="script/lib/app.min.js"></script>
+        <script src="script/web/list.js"></script>
+        <script>
+            App.controller('home', function (page) {
+                var list = MSA.List.getArticles();
+                $listCont = $(page).find('.app-list');
+                $.each(list, function(i, o){
+                    if(o.name){
+                        $listCont.append('<li>' + o.name + '</li>');
+                    }
+                })
+            });
+
+            App.controller('detail', function (page) {
+                // put stuff here
+            });
+
+            try {
+                App.restore();
+            } catch (err) {
+                App.load('home');
+            }
+        </script>
+    </body>
+</html>
