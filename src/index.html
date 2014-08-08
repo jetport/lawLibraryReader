@@ -6,14 +6,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
         <link rel="stylesheet" href="style/app.min.css">
         <link rel="stylesheet" href="style/custom.css">
+        <style type="text/style">
+        .button-search {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACjElEQ…BN3Eb7/8yva2LSSH4XsbVKbm5413AeCePamhYRRYv52z/AKK4/BRObOQAAAABJRU5ErkJggg==);
+            background-repeat: no-repeat;
+            background-position: 12px center;
+            -webkit-background-size: 16px 16px;
+            background-size: 16px 16px;
+
+            height: 16px;
+            width: 16px;
+        }
+        </style>
     </head>
 
     <body>
         <div class="app-page" data-page="home">
-            <div class="app-topbar">
+            <div class="app-topbar blue">
                 <div class="app-title">法律文库</div>
+                <div class="app-button right button-search selected">&nbsp;</div>
             </div>
             <div class="app-content">
+                <form action="">
+                    <input class="app-input" type="search" placeholder="Search...">
+                    <input type="submit" style="display:none">
+                </form>
                 <!-- <div class="app-section"> -->
                     <ul class="app-list">
                     </ul>
@@ -22,7 +39,7 @@
         </div>
 
         <div class="app-page" data-page="detail">
-            <div class="app-topbar">
+            <div class="app-topbar blue">
                 <div class="app-button left" data-back>返回</div>
                 <div class="app-title"></div>
             </div>
