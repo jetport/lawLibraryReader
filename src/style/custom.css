@@ -14,3 +14,18 @@
 	background-repeat: no-repeat;
 	background-position: 0px center;
 }
+
+.list-cont {
+	left: 240px;
+	position: relative;
+}
+
+.menu {
+	height: 100%;
+	width: 240px;
+	position: absolute;
+	left: 0;
+	top:0;
+	overflow-y:auto;
+	z-index: 999;
+}

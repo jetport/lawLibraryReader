@@ -22,21 +22,29 @@
 
     <body>
         <div class="app-page" data-page="home">
-            <div class="app-topbar blue">
-                <div class="app-button left button-menu js-btn-menu">&nbsp;&nbsp;</div>
-                <div class="app-title">法律文库</div>
-                <div class="app-button right button-search js-btn-search">&nbsp;</div>
-            </div>
-            <div class="app-content">
-                <form class="js-form-search" action="" style="display:none;">
-                    <input class="app-input" type="search" placeholder="Search...">
-                    <input type="submit" style="display:none">
-                </form>
-                <!-- <div class="app-section"> -->
+            <div class="menu" data-scrollable>
+                <div class="">
                     <ul class="app-list">
+                        <li class="js-item" data-id="743">海事国际公约</li><li class="js-item" data-id="744">法规规范</li><li class="js-item" data-id="752">标准文库</li><li class="js-item" data-id="753">内部业务工作制度</li><li class="js-item" data-id="743">海事国际公约</li><li class="js-item" data-id="744">法规规范</li><li class="js-item" data-id="752">标准文库</li><li class="js-item" data-id="753">内部业务工作制度</li><li class="js-item" data-id="743">海事国际公约</li><li class="js-item" data-id="744">法规规范</li><li class="js-item" data-id="752">标准文库</li><li class="js-item" data-id="753">内部业务工作制度</li>
                     </ul>
-                <!-- </div> -->
+                </div>
             </div>
+            <div class="list-cont">
+                <div class="app-topbar blue">
+                    <div class="app-button left button-menu js-btn-menu">&nbsp;&nbsp;</div>
+                    <div class="app-title">法律文库</div>
+                    <div class="app-button right button-search js-btn-search">&nbsp;</div>
+                </div>
+                <div class="app-content">
+                    <form class="js-form-search" action="" style="display:none;">
+                        <input class="app-input" type="search" placeholder="Search...">
+                        <input type="submit" style="display:none">
+                    </form>
+                        <ul class="app-list">
+                        </ul>
+                </div>
+            </div>
+
         </div>
 
         <div class="app-page" data-page="detail">
@@ -61,7 +69,7 @@
                 $listCont = $(page).find('.app-list');
                 $.each(list, function(i, o){
                     if(o.name){
-                        $listCont.append('<li>' + o.name + '</li>');
+                        $listCont.append('<li class="js-item" data-id="' + o.id + '">' + o.name + '</li>');
                     }
                 })
 
@@ -77,10 +85,16 @@
                         $formSearch.show();
                     }
                 })
+
+                $p.on('click', 'li.js-item', function(e){
+                    $item = $(this);
+                    App.load('detail');
+                })
             });
 
             App.controller('detail', function (page) {
                 // put stuff here
+                
             });
 
             try {
