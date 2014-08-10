@@ -23,11 +23,12 @@
     <body>
         <div class="app-page" data-page="home">
             <div class="app-topbar blue">
+                <div class="app-button left button-menu js-btn-menu">&nbsp;&nbsp;</div>
                 <div class="app-title">法律文库</div>
-                <div class="app-button right button-search selected">&nbsp;</div>
+                <div class="app-button right button-search js-btn-search">&nbsp;</div>
             </div>
             <div class="app-content">
-                <form action="">
+                <form class="js-form-search" action="" style="display:none;">
                     <input class="app-input" type="search" placeholder="Search...">
                     <input type="submit" style="display:none">
                 </form>
@@ -56,10 +57,24 @@
         <script>
             App.controller('home', function (page) {
                 var list = MSA.List.getArticles();
+                $p = $(page);
                 $listCont = $(page).find('.app-list');
                 $.each(list, function(i, o){
                     if(o.name){
                         $listCont.append('<li>' + o.name + '</li>');
+                    }
+                })
+
+                $formSearch = $p.find('.js-form-search');
+                $btnSearch = $p.find('.js-btn-search');
+                $btnSearch.on('click', function(){
+                    $searchBtn = $(this);
+                    if($searchBtn.hasClass('selected')){
+                        $searchBtn.removeClass('selected');
+                        $formSearch.hide();
+                    }else{
+                        $searchBtn.addClass('selected');
+                        $formSearch.show();
                     }
                 })
             });
