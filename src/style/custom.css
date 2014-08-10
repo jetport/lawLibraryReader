@@ -37,3 +37,10 @@
 .button-menu {
 	padding-left: 40px;
 }
+
+.form-search {
+	position: relative;
+	left: 0;
+	top: 0;
+	color: #444;
+}
