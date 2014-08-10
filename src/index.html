@@ -22,13 +22,7 @@
 
     <body>
         <div class="app-page" data-page="home">
-            <div class="menu" data-scrollable>
-                <div class="">
-                    <ul class="app-list">
-                        <li class="js-item" data-id="743">海事国际公约</li><li class="js-item" data-id="744">法规规范</li><li class="js-item" data-id="752">标准文库</li><li class="js-item" data-id="753">内部业务工作制度</li><li class="js-item" data-id="743">海事国际公约</li><li class="js-item" data-id="744">法规规范</li><li class="js-item" data-id="752">标准文库</li><li class="js-item" data-id="753">内部业务工作制度</li><li class="js-item" data-id="743">海事国际公约</li><li class="js-item" data-id="744">法规规范</li><li class="js-item" data-id="752">标准文库</li><li class="js-item" data-id="753">内部业务工作制度</li>
-                    </ul>
-                </div>
-            </div>
+            
             <div class="list-cont">
                 <div class="app-topbar blue">
                     <div class="app-button left button-menu js-btn-menu">&nbsp;&nbsp;</div>
@@ -40,11 +34,40 @@
                         <input class="app-input" type="search" placeholder="Search...">
                         <input type="submit" style="display:none">
                     </form>
-                        <ul class="app-list">
+                        <ul class="app-list js-aritcle-list">
                         </ul>
                 </div>
             </div>
-
+            <div class="menu" data-scrollable>
+                <div class="">
+                    <ul class="app-list">
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                        <li data-id="743" class="js-menu-item">海事国际公约</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="app-page" data-page="detail">
@@ -59,14 +82,14 @@
         <script>
             window.MSA = {};
         </script>
-        <script src="script/lib/zepto.js"></script>
+        <script src="script/lib/jquery-2.1.1.js"></script>
         <script src="script/lib/app.min.js"></script>
         <script src="script/web/list.js"></script>
         <script>
             App.controller('home', function (page) {
                 var list = MSA.List.getArticles();
                 $p = $(page);
-                $listCont = $(page).find('.app-list');
+                $listCont = $(page).find('.js-aritcle-list');
                 $.each(list, function(i, o){
                     if(o.name){
                         $listCont.append('<li class="js-item" data-id="' + o.id + '">' + o.name + '</li>');
@@ -87,8 +110,25 @@
                 })
 
                 $p.on('click', 'li.js-item', function(e){
+                    e.isPropagationStopped()
                     $item = $(this);
                     App.load('detail');
+                })
+
+
+                $btnMenu = $p.find('.js-btn-menu');
+                $btnMenu.on('click', function(){
+                    $listCont = $p.find('.list-cont');
+                    if($listCont.hasClass('move-left')){
+                        $listCont.removeClass('move-left');
+                    }else{
+                        $listCont.addClass('move-left');
+                    }
+                    
+                })
+
+                $p.on('click', 'li.js-menu-item', function(){
+                    console.log(this);
                 })
             });
 

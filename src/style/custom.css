@@ -16,8 +16,13 @@
 }
 
 .list-cont {
-	left: 240px;
+	/*left: 240px;*/
 	position: relative;
+	transition: 0.5s left;
+}
+
+.move-left {
+	left: 240px;
 }
 
 .menu {
@@ -27,5 +32,8 @@
 	left: 0;
 	top:0;
 	overflow-y:auto;
-	z-index: 999;
+}
+
+.button-menu {
+	padding-left: 40px;
 }
