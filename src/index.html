@@ -84,7 +84,7 @@
         <script>
             window.MSA = {};
         </script>
-        <script src="script/lib/jquery-2.1.1.js"></script>
+        <script src="script/lib/zepto.js"></script>
         <script src="script/lib/app.min.js"></script>
         <script src="script/web/list.js"></script>
         <script>
@@ -119,18 +119,28 @@
 
 
                 $btnMenu = $p.find('.js-btn-menu');
-                $btnMenu.on('click', function(){
+                $btnMenu.on('touchend', function(e){
                     $listCont = $p.find('.list-cont');
                     if($listCont.hasClass('move-left')){
                         $listCont.removeClass('move-left');
                     }else{
                         $listCont.addClass('move-left');
                     }
-                    
+                    e.preventDefault();
                 })
 
                 $p.on('click', 'li.js-menu-item', function(){
-                    console.log(this);
+                    alert(1);
+                })
+
+                $p.find('.js-aritcle-list').on('touchend', function(){
+                    $listCont = $(this);
+                    if($listCont.hasClass('move-left')){
+                        $listCont.removeClass('move-left');
+                        e.preventDefault();
+                    }else{
+                        $listCont.addClass('move-left');
+                    }
                 })
             });
 
