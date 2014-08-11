@@ -1,0 +1,27 @@
+{
+  "name": "lawLibraryReader",
+  "version": "0.1.0",
+  "homepage": "https://github.com/canvasT/lawLibraryReader",
+  "authors": [
+    "liang wang <iamhite@gmail.com>"
+  ],
+  "description": "a law file read and search system for smart phone",
+  "main": "index.js",
+  "keywords": [
+    "search",
+    "reader",
+    "law"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "appjs": "~2.0.3",
+    "zeptojs": "~1.1.4"
+  }
+}
