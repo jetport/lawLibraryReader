@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       }
     },
     connect: {
-      dev: {
+      dev: { 
         port: 8080
       }
     },
