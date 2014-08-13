@@ -95,7 +95,7 @@
 		        "description": ""
 		    }
 		];
-		// $.ajaxJSONP({url:'http://www.nbmsa.gov.cn/api/law_documents/categories/'},function(_result){
+		// $.ajax({url:'http://www.nbmsa.gov.cn/api/law_documents/categories/'},function(_result){
         	var me = {key:'categories',data:_res};
 			store.save(me);
 			//
