@@ -144,16 +144,15 @@
         <script src="bower_components/appjs/dist/app.min.js"></script>
 
         <script src="bower_components/lawnchair/src/Lawnchair.js"></script>
+        <script src="bower_components/lawnchair/src/adapters/dom.js"></script>
         <script src="bower_components/lawnchair/src/adapters/memory.js"></script>
         <script src="bower_components/lawnchair/src/adapters/blackberry-persistent-storage.js"></script>
         <script src="bower_components/lawnchair/src/adapters/gears-sqlite.js"></script>
         <script src="bower_components/lawnchair/src/adapters/ie-userdata.js"></script>
         <script src="bower_components/lawnchair/src/adapters/indexed-db.js"></script>
         <script src="bower_components/lawnchair/src/adapters/webkit-sqlite.js"></script>
-        <script src="bower_components/lawnchair/src/adapters/dom.js"></script>
-        <script src="bower_components/lawnchair/src/adapters/html5-filesystem.js"></script>
-        <script src="bower_components/lawnchair/src/adapters/touchdb-couchdb.js"></script>
 
+        <script src="script/model/sql.js"></script>
         <script src="script/home.js"></script>
         <script src="script/detail.js"></script>
         <script src="script/web/list.js"></script>
@@ -163,6 +162,12 @@
             } catch (err) {
                 App.load('home');
             }
+            // for test begin
+            sql.listCategory().done(function(_res){
+                console.log('_res = ');
+                console.log(_res);
+            })
+            // end
         </script>
     </body>
 </html>
