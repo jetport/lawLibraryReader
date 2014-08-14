@@ -163,31 +163,64 @@
 			data.keyword = _param.keyword;
 		}
 		// $.getJSON('http://www.nbmsa.gov.cn/api/law_documents/search/',data,function(_result){
-			var _res =[{
-		    id: 333,
-		    name: '中华人民共和国船舶登记条例',
-		    cateory: '123',
-		    publish_date: '2012-1-1',
-		    effective_date: '2012-5-1',
-		    markdown_html: '<div>  第一章　总则 ... </div>',
-		    pdf_document_url: 'http://www.nbmsa.gov.cn/media/documents/2012/01/01/h2asdfh32asdafd3434df3.pdf'
-		},{
-		    id: 333,
-		    name: '美国人民共和国船舶登记条例',
-		    cateory: '123',
-		    publish_date: '2012-1-1',
-		    effective_date: '2012-5-1',
-		    markdown_html: '<div>  第2章　总则 ... </div>',
-		    pdf_document_url: 'http://www.nbmsa.gov.cn/media/documents/2012/01/01/h2asdfh32asdafd3434df3.pdf'
-		},{
-		    id: 333,
-		    name: '英国联邦船舶登记条例',
-		    cateory: '123',
-		    publish_date: '2012-1-1',
-		    effective_date: '2012-5-1',
-		    markdown_html: '<div>  第2章　总则 ... </div>',
-		    pdf_document_url: 'http://www.nbmsa.gov.cn/media/documents/2012/01/01/h2asdfh32asdafd3434df3.pdf'
-		}];
+			var _res =[
+    {
+        "category": "法律法规文库__法规规范__行政法规", 
+        "markdown_html_page": "/media/documents/2014/08/06/2dc659b6106aabfaf552e749786e47e84e2687e6/html/markdown.html", 
+        "simple_html_page": "/media/documents/2014/08/06/2dc659b6106aabfaf552e749786e47e84e2687e6/html/simple.html", 
+        "description": "", 
+        "tags": "综合", 
+        "created": "2014-08-06 15:59:19", 
+        "id": 3369, 
+        "full_html_pages": [
+            "/media/documents/2014/08/06/2dc659b6106aabfaf552e749786e47e84e2687e6/html/page-1.html", 
+            "/media/documents/2014/08/06/2dc659b6106aabfaf552e749786e47e84e2687e6/html/page-2.html", 
+            "/media/documents/2014/08/06/2dc659b6106aabfaf552e749786e47e84e2687e6/html/page-3.html", 
+            "/media/documents/2014/08/06/2dc659b6106aabfaf552e749786e47e84e2687e6/html/page-4.html", 
+            "/media/documents/2014/08/06/2dc659b6106aabfaf552e749786e47e84e2687e6/html/page-5.html"
+        ], 
+        "publish_date": "2001-11-11 15:59:14", 
+        "effective_date": "2002-01-01 15:59:27", 
+        "title": "行政法规制定程序条例（2001年11月11日发布）", 
+        "expired": false, 
+        "publish_source": "国务院"
+    }, 
+    {
+        "category": "法律法规文库__法规规范__行政法规", 
+        "markdown_html_page": "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/markdown.html", 
+        "simple_html_page": "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/simple.html", 
+        "description": "", 
+        "tags": "综合", 
+        "created": "2014-08-06 16:28:00", 
+        "id": 3402, 
+        "full_html_pages": [
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-1.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-2.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-3.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-4.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-5.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-6.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-7.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-8.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-9.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-10.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-11.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-12.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-13.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-14.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-15.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-16.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-17.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-18.html", 
+            "/media/documents/2014/08/06/18223edf1bc630908478334985067390af5ffc2a__/html/page-19.html"
+        ], 
+        "publish_date": "2011-01-08 00:00:00", 
+        "effective_date": "2011-01-08 00:00:00", 
+        "title": "国务院关于废止和修改部分行政法规的决定(2011年1月8日发布)", 
+        "expired": false, 
+        "publish_source": "国务院"
+    }
+];
 			_callback(_res);
 		// });
 		//TODO  search in cache
