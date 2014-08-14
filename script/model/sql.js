@@ -3,7 +3,7 @@
  */
 
 (function(exports,$){
-
+	var PAGESIZE = 10;
 	// creat a new db
 	var store = new Lawnchair({name:'tb_lawreader'}, function(store) {
         // 预加载 文档分类数据；
@@ -106,21 +106,92 @@
 	function fetchDocuments(_param, _callback){
 		var data = {
 			start : parseInt(_param.start,10) || 0,
-			num : parseInt(_param.num,10) || 10
+			num : parseInt(_param.num,10) || PAGESIZE
 		};
 		if(_param.cat){
 			data.cat = _param.cat;
 		}
-		$.getJSON('http://www.nbmsa.gov.cn/api/law_documents/documents/?callback=alert',data,function(_result){
-        	var me = {key:'categories_'+(data.start * data.num),data:_res};//TODO
-			store.save(me);
-			//
-			_callback(_result);
-		});
+		// $.getJSON('http://www.nbmsa.gov.cn/api/law_documents/documents/',data,function(_result){
+		var _res ={key:'documents',data: [{
+		    id: 333,
+		    name: '中华人民共和国船舶登记条例',
+		    cateory: '123',
+		    publish_date: '2012-1-1',
+		    effective_date: '2012-5-1',
+		    markdown_html: '<div>  第一章　总则 ... </div>',
+		    pdf_document_url: 'http://www.nbmsa.gov.cn/media/documents/2012/01/01/h2asdfh32asdafd3434df3.pdf'
+		},{
+		    id: 333,
+		    name: '美国人民共和国船舶登记条例',
+		    cateory: '123',
+		    publish_date: '2012-1-1',
+		    effective_date: '2012-5-1',
+		    markdown_html: '<div>  第2章　总则 ... </div>',
+		    pdf_document_url: 'http://www.nbmsa.gov.cn/media/documents/2012/01/01/h2asdfh32asdafd3434df3.pdf'
+		},{
+		    id: 333,
+		    name: '英国联邦船舶登记条例',
+		    cateory: '123',
+		    publish_date: '2012-1-1',
+		    effective_date: '2012-5-1',
+		    markdown_html: '<div>  第2章　总则 ... </div>',
+		    pdf_document_url: 'http://www.nbmsa.gov.cn/media/documents/2012/01/01/h2asdfh32asdafd3434df3.pdf'
+		}]};
+			store.get('documents',function(older){
+				if(older && older.data){
+					var newer = older;
+				}else{
+					var newer = {key:'documents',data:[]};
+				}
+				for(var i= 0, l = _res.data.length; i<l; i++){
+					newer.data[data.start+i] = _res.data[i];
+				}
+
+				store.save(newer);
+				//
+				_callback(newer);
+			})
+		// });
 	}
-
-	var deferred = $.Deferred();
-
+	// search
+	function searchDocuments(_param, _callback){
+		var data = {
+			start : parseInt(_param.start,10) || 0,
+			num : parseInt(_param.num,10) || PAGESIZE
+		};
+		if(_param.keyword){
+			data.keyword = _param.keyword;
+		}
+		// $.getJSON('http://www.nbmsa.gov.cn/api/law_documents/search/',data,function(_result){
+			var _res =[{
+		    id: 333,
+		    name: '中华人民共和国船舶登记条例',
+		    cateory: '123',
+		    publish_date: '2012-1-1',
+		    effective_date: '2012-5-1',
+		    markdown_html: '<div>  第一章　总则 ... </div>',
+		    pdf_document_url: 'http://www.nbmsa.gov.cn/media/documents/2012/01/01/h2asdfh32asdafd3434df3.pdf'
+		},{
+		    id: 333,
+		    name: '美国人民共和国船舶登记条例',
+		    cateory: '123',
+		    publish_date: '2012-1-1',
+		    effective_date: '2012-5-1',
+		    markdown_html: '<div>  第2章　总则 ... </div>',
+		    pdf_document_url: 'http://www.nbmsa.gov.cn/media/documents/2012/01/01/h2asdfh32asdafd3434df3.pdf'
+		},{
+		    id: 333,
+		    name: '英国联邦船舶登记条例',
+		    cateory: '123',
+		    publish_date: '2012-1-1',
+		    effective_date: '2012-5-1',
+		    markdown_html: '<div>  第2章　总则 ... </div>',
+		    pdf_document_url: 'http://www.nbmsa.gov.cn/media/documents/2012/01/01/h2asdfh32asdafd3434df3.pdf'
+		}];
+			_callback(_res);
+		// });
+		//TODO  search in cache
+	}
 
 	exports.sql = {
 		listCategory : function(){
@@ -128,33 +199,43 @@
 
 			store.get('categories',function(_res){
 				if(_res){// cache hits
-					deferred.resolve(_res);
+					deferred.resolve(_res.data);
 				}else{
 					fetchCategorys(function(_res){
-						deferred.resolve(_res);
+						deferred.resolve(_res.data);
 					});
 				}
 			})
 
 			return deferred;
 		},
-		listDocuments : function(_params){
+		listDocuments : function(_param){
 			var deferred = $.Deferred();
+			var start = _param.start || 0,
+				num = _param.num || PAGESIZE
 
-			store.get('categories',function(_res){
+			store.get('documents',function(_res){
+				if(_res && _res.data){// cache hits
+					deferred.resolve(_res.data.splice(start, num));
+				}else{
+					fetchDocuments(_param,function(_res2){
+						deferred.resolve(_res2.data.splice(start, num));
+					});
+				}
+			})
+
+			return deferred;
+		},
+		search : function(_param){
+			var deferred = $.Deferred();
+			searchDocuments(_param,function(_res){
 				if(_res){// cache hits
 					deferred.resolve(_res);
 				}else{
-					fetchDocuments(_param,function(_res){
-						deferred.resolve(_res);
-					});
+					deferred.resolve([]);
 				}
 			})
 
-			return deferred;
-		},
-		search : function(_params){
-			var deferred = $.Deferred();
 			return deferred;
 		}
 	};

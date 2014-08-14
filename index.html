@@ -165,7 +165,21 @@
             }
             // for test begin
             sql.listCategory().done(function(_res){
-                console.log('_res = ');
+                console.log('listCategory = ');
+                console.log(_res);
+            })
+            sql.listDocuments({
+                start:0,
+                cat : 'abc'
+            }).done(function(_res){
+                console.log('listDocuments = ');
+                console.log(_res);
+            })
+            sql.search({
+                start:0,
+                keyword : 'abc'
+            }).done(function(_res){
+                console.log('search = ');
                 console.log(_res);
             })
             // end
