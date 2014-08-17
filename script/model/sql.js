@@ -112,31 +112,243 @@
 			data.cat = _param.cat;
 		}
 		// $.getJSON('http://www.nbmsa.gov.cn/api/law_documents/documents/',data,function(_result){
-		var _res ={key:'documents',data: [{
-		    id: 333,
-		    name: '中华人民共和国船舶登记条例',
-		    cateory: '123',
-		    publish_date: '2012-1-1',
-		    effective_date: '2012-5-1',
-		    markdown_html: '<div>  第一章　总则 ... </div>',
-		    pdf_document_url: 'http://www.nbmsa.gov.cn/media/documents/2012/01/01/h2asdfh32asdafd3434df3.pdf'
-		},{
-		    id: 333,
-		    name: '美国人民共和国船舶登记条例',
-		    cateory: '123',
-		    publish_date: '2012-1-1',
-		    effective_date: '2012-5-1',
-		    markdown_html: '<div>  第2章　总则 ... </div>',
-		    pdf_document_url: 'http://www.nbmsa.gov.cn/media/documents/2012/01/01/h2asdfh32asdafd3434df3.pdf'
-		},{
-		    id: 333,
-		    name: '英国联邦船舶登记条例',
-		    cateory: '123',
-		    publish_date: '2012-1-1',
-		    effective_date: '2012-5-1',
-		    markdown_html: '<div>  第2章　总则 ... </div>',
-		    pdf_document_url: 'http://www.nbmsa.gov.cn/media/documents/2012/01/01/h2asdfh32asdafd3434df3.pdf'
-		}]};
+		var _res ={key:'documents',data: [
+    {
+        category: "法律法规文库__法规规范__行政法规",
+        markdown_html_page: "/media/documents/2014/08/06/af4fd3af9f60a32acc253035bf65438335a55953/html/markdown.html",
+        simple_html_page: "/media/documents/2014/08/06/af4fd3af9f60a32acc253035bf65438335a55953/html/simple.html",
+        description: "",
+        tags: "综合",
+        created: "2014-08-06 15:16:23",
+        id: 3327,
+        full_html_pages: [
+            "/media/documents/2014/08/06/af4fd3af9f60a32acc253035bf65438335a55953/html/page-1.html",
+            "/media/documents/2014/08/06/af4fd3af9f60a32acc253035bf65438335a55953/html/page-2.html",
+            "/media/documents/2014/08/06/af4fd3af9f60a32acc253035bf65438335a55953/html/page-3.html",
+            "/media/documents/2014/08/06/af4fd3af9f60a32acc253035bf65438335a55953/html/page-4.html",
+            "/media/documents/2014/08/06/af4fd3af9f60a32acc253035bf65438335a55953/html/page-5.html"
+        ],
+        publish_date: "1994-07-15 15:08:18",
+        effective_date: "1994-07-15 15:09:00",
+        title: "中华人民共和国公民出境入境管理法实施细则（1994年7月15日发布）",
+        expired: false,
+        publish_source: "国务院"
+    },
+    {
+        category: "法律法规文库__法规规范__行政法规",
+        markdown_html_page: "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/markdown.html",
+        simple_html_page: "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/simple.html",
+        description: "",
+        tags: "综合",
+        created: "2014-08-06 15:19:35",
+        id: 3328,
+        full_html_pages: [
+        "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/page-1.html",
+        "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/page-2.html",
+        "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/page-3.html",
+        "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/page-4.html",
+        "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/page-5.html",
+        "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/page-6.html",
+        "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/page-7.html",
+        "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/page-8.html",
+        "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/page-9.html",
+        "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/page-10.html",
+        "/media/documents/2014/08/06/5c9de5a51e66cdbb90319ee36ab2461c3eb65021/html/page-11.html"
+        ],
+        publish_date: "2001-12-11 15:13:05",
+        effective_date: "2002-01-01 15:13:38",
+        title: "中华人民共和国国际海运条例（2001年12月11日发布）",
+        expired: false,
+        publish_source: "国务院"
+    },
+    {
+        category: "法律法规文库__法规规范__行政法规",
+        markdown_html_page: "/media/documents/2014/08/06/5e4b12c2d6785901586d7c3e9abe8e14a2c2e332/html/markdown.html",
+        simple_html_page: "/media/documents/2014/08/06/5e4b12c2d6785901586d7c3e9abe8e14a2c2e332/html/simple.html",
+        description: "",
+        tags: "通航",
+        created: "2014-08-06 15:21:02",
+        id: 3329,
+        full_html_pages: [
+        "/media/documents/2014/08/06/5e4b12c2d6785901586d7c3e9abe8e14a2c2e332/html/page-1.html",
+        "/media/documents/2014/08/06/5e4b12c2d6785901586d7c3e9abe8e14a2c2e332/html/page-2.html",
+        "/media/documents/2014/08/06/5e4b12c2d6785901586d7c3e9abe8e14a2c2e332/html/page-3.html",
+        "/media/documents/2014/08/06/5e4b12c2d6785901586d7c3e9abe8e14a2c2e332/html/page-4.html"
+        ],
+        publish_date: "1993-01-11 15:14:45",
+        effective_date: "1993-02-01 15:15:00",
+        title: "中华人民共和国海上航行警告和航行通告管理规定（1993年1月11日发布）",
+        expired: false,
+        publish_source: "国务院"
+    },
+    {
+        category: "法律法规文库__法规规范__行政法规",
+        markdown_html_page: "/media/documents/2014/08/06/81d08d2259b86dc81b8e6f470a8fe2078cdd5cb3/html/markdown.html",
+        simple_html_page: "/media/documents/2014/08/06/81d08d2259b86dc81b8e6f470a8fe2078cdd5cb3/html/simple.html",
+        description: "",
+        tags: "通航",
+        created: "2014-08-06 15:22:32",
+        id: 3330,
+        full_html_pages: [
+        "/media/documents/2014/08/06/81d08d2259b86dc81b8e6f470a8fe2078cdd5cb3/html/page-1.html",
+        "/media/documents/2014/08/06/81d08d2259b86dc81b8e6f470a8fe2078cdd5cb3/html/page-2.html",
+        "/media/documents/2014/08/06/81d08d2259b86dc81b8e6f470a8fe2078cdd5cb3/html/page-3.html",
+        "/media/documents/2014/08/06/81d08d2259b86dc81b8e6f470a8fe2078cdd5cb3/html/page-4.html",
+        "/media/documents/2014/08/06/81d08d2259b86dc81b8e6f470a8fe2078cdd5cb3/html/page-5.html",
+        "/media/documents/2014/08/06/81d08d2259b86dc81b8e6f470a8fe2078cdd5cb3/html/page-6.html"
+        ],
+        publish_date: "1990-03-03 15:16:06",
+        effective_date: "1990-03-03 15:16:27",
+        title: "中华人民共和国海上交通事故调查处理条例（1990年3月3日发布）",
+        expired: false,
+        publish_source: "国务院"
+    },
+    {
+        category: "法律法规文库__法规规范__行政法规",
+        markdown_html_page: "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/markdown.html",
+        simple_html_page: "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/simple.html",
+        description: "",
+        tags: "综合",
+        created: "2014-08-06 15:23:29",
+        id: 3331,
+        full_html_pages: [
+        "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/page-1.html",
+        "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/page-2.html",
+        "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/page-3.html",
+        "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/page-4.html",
+        "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/page-5.html",
+        "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/page-6.html",
+        "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/page-7.html",
+        "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/page-8.html",
+        "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/page-9.html",
+        "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/page-10.html",
+        "/media/documents/2014/08/06/8200072301fe65ea4811271b5f9cfb78960b57da/html/page-11.html"
+        ],
+        publish_date: "2007-04-05 15:22:31",
+        effective_date: "2008-05-01 15:23:24",
+        title: "中华人民共和国政府信息公开条例（2007年4月5日发布）",
+        expired: false,
+        publish_source: "国务院"
+    },
+    {
+        category: "法律法规文库__法规规范__行政法规",
+        markdown_html_page: "/media/documents/2014/08/06/926b76842f1bf9c5bc6aea0c2b65117addbf3e16/html/markdown.html",
+        simple_html_page: "/media/documents/2014/08/06/926b76842f1bf9c5bc6aea0c2b65117addbf3e16/html/simple.html",
+        description: "",
+        tags: "危防",
+        created: "2014-08-06 15:24:09",
+        id: 3332,
+        full_html_pages: [
+        "/media/documents/2014/08/06/926b76842f1bf9c5bc6aea0c2b65117addbf3e16/html/page-1.html",
+        "/media/documents/2014/08/06/926b76842f1bf9c5bc6aea0c2b65117addbf3e16/html/page-2.html",
+        "/media/documents/2014/08/06/926b76842f1bf9c5bc6aea0c2b65117addbf3e16/html/page-3.html",
+        "/media/documents/2014/08/06/926b76842f1bf9c5bc6aea0c2b65117addbf3e16/html/page-4.html",
+        "/media/documents/2014/08/06/926b76842f1bf9c5bc6aea0c2b65117addbf3e16/html/page-5.html"
+        ],
+        publish_date: "1985-03-06 15:17:41",
+        effective_date: "1985-04-01 15:18:09",
+        title: "中华人民共和国海洋倾废管理条例（1985年3月6日发布）",
+        expired: false,
+        publish_source: "国务院"
+    },
+    {
+        category: "法律法规文库__法规规范__行政法规",
+        markdown_html_page: "/media/documents/2014/08/06/9df55a681f40379b2356e0abc6aafc524d88b880/html/markdown.html",
+        simple_html_page: "/media/documents/2014/08/06/9df55a681f40379b2356e0abc6aafc524d88b880/html/simple.html",
+        description: "",
+        tags: "综合",
+        created: "2014-08-06 15:25:18",
+        id: 3333,
+        full_html_pages: [
+        "/media/documents/2014/08/06/9df55a681f40379b2356e0abc6aafc524d88b880/html/page-1.html",
+        "/media/documents/2014/08/06/9df55a681f40379b2356e0abc6aafc524d88b880/html/page-2.html",
+        "/media/documents/2014/08/06/9df55a681f40379b2356e0abc6aafc524d88b880/html/page-3.html",
+        "/media/documents/2014/08/06/9df55a681f40379b2356e0abc6aafc524d88b880/html/page-4.html",
+        "/media/documents/2014/08/06/9df55a681f40379b2356e0abc6aafc524d88b880/html/page-5.html",
+        "/media/documents/2014/08/06/9df55a681f40379b2356e0abc6aafc524d88b880/html/page-6.html",
+        "/media/documents/2014/08/06/9df55a681f40379b2356e0abc6aafc524d88b880/html/page-7.html"
+        ],
+        publish_date: "1987-10-20 15:25:13",
+        effective_date: "1987-10-20 15:25:24",
+        title: "中华人民共和国渔业法实施细则（1987年10月20日发布）",
+        expired: false,
+        publish_source: "国务院"
+    },
+    {
+        category: "法律法规文库__法规规范__行政法规",
+        markdown_html_page: "/media/documents/2014/08/06/c4527bc17b9c231803a0ffc95029aef078ba00ea/html/markdown.html",
+        simple_html_page: "/media/documents/2014/08/06/c4527bc17b9c231803a0ffc95029aef078ba00ea/html/simple.html",
+        description: "",
+        tags: "船舶",
+        created: "2014-08-06 15:26:08",
+        id: 3334,
+        full_html_pages: [
+        "/media/documents/2014/08/06/c4527bc17b9c231803a0ffc95029aef078ba00ea/html/page-1.html",
+        "/media/documents/2014/08/06/c4527bc17b9c231803a0ffc95029aef078ba00ea/html/page-2.html",
+        "/media/documents/2014/08/06/c4527bc17b9c231803a0ffc95029aef078ba00ea/html/page-3.html",
+        "/media/documents/2014/08/06/c4527bc17b9c231803a0ffc95029aef078ba00ea/html/page-4.html",
+        "/media/documents/2014/08/06/c4527bc17b9c231803a0ffc95029aef078ba00ea/html/page-5.html",
+        "/media/documents/2014/08/06/c4527bc17b9c231803a0ffc95029aef078ba00ea/html/page-6.html"
+        ],
+        publish_date: "2003-06-27 15:25:54",
+        effective_date: "2003-08-01 15:26:15",
+        title: "中华人民共和国渔业船舶检验条例（2003年6月27日发布）",
+        expired: false,
+        publish_source: "国务院"
+        },
+        {
+        category: "法律法规文库__法规规范__行政法规",
+        markdown_html_page: "/media/documents/2014/08/06/b96a36455e23d4872e4437129778af13487d7bec/html/markdown.html",
+        simple_html_page: "/media/documents/2014/08/06/b96a36455e23d4872e4437129778af13487d7bec/html/simple.html",
+        description: "",
+        tags: "综合",
+        created: "2014-08-06 15:27:57",
+        id: 3335,
+        full_html_pages: [
+        "/media/documents/2014/08/06/b96a36455e23d4872e4437129778af13487d7bec/html/page-1.html",
+        "/media/documents/2014/08/06/b96a36455e23d4872e4437129778af13487d7bec/html/page-2.html",
+        "/media/documents/2014/08/06/b96a36455e23d4872e4437129778af13487d7bec/html/page-3.html",
+        "/media/documents/2014/08/06/b96a36455e23d4872e4437129778af13487d7bec/html/page-4.html"
+        ],
+        publish_date: "1989-07-03 15:27:35",
+        effective_date: "1989-08-01 15:28:02",
+        title: "中华人民共和国渔港水域交通安全管理条例（1989年7月3日发布）",
+        expired: false,
+        publish_source: "国务院"
+    },
+    {
+        category: "法律法规文库__法规规范__行政法规",
+        markdown_html_page: "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/markdown.html",
+        simple_html_page: "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/simple.html",
+        description: "",
+        tags: "综合",
+        created: "2014-08-06 15:29:02",
+        id: 3336,
+        full_html_pages: [
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-1.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-2.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-3.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-4.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-5.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-6.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-7.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-8.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-9.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-10.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-11.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-12.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-13.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-14.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-15.html",
+            "/media/documents/2014/08/06/907f21856c7152718e77d5211dabd489ba09d272/html/page-16.html"
+        ],
+        publish_date: "2007-05-29 15:28:38",
+        effective_date: "2007-08-01 15:29:07",
+        title: "中华人民共和国行政复议法实施条例（2007年5月29日发布）",
+        expired: false,
+        publish_source: "国务院"
+    }
+]};
 			store.get('documents',function(older){
 				if(older && older.data){
 					var newer = older;
@@ -248,13 +460,13 @@
 				num = _param.num || PAGESIZE
 
 			store.get('documents',function(_res){
-				if(_res && _res.data){// cache hits
-					deferred.resolve(_res.data.splice(start, num));
-				}else{
+				// if(_res && _res.data){// cache hits
+				// 	deferred.resolve(_res.data.splice(start, num));
+				// }else{
 					fetchDocuments(_param,function(_res2){
 						deferred.resolve(_res2.data.splice(start, num));
 					});
-				}
+				// }
 			})
 
 			return deferred;
