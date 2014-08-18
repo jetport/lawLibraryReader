@@ -12,6 +12,10 @@ window.MSA.Home = MSA.Class({
         this.$btnConfirmSearch = this.$p.find('.js-btn-confirm-search');
         this.$iptSearch = this.$p.find('.js-ipt-search');
         this.$appContent = this.$p.find('.app-content');
+        this.$btnDownload = this.$p.find('.js-btn-download');
+        this.$mask = this.$p.find('.js-mask');
+        this.$process = this.$p.find('.js-process-bar');
+        this.$processInner = this.$p.find('.js-process-bar-inner');
         this.initData();
         this.initDom();
         this.initEvent();
@@ -21,8 +25,7 @@ window.MSA.Home = MSA.Class({
         var that = this;
         this.startIndex = 0;
         this.categoryId = 0;
-        this.articleList = MSA.List.getArticles();
-        this.categories = MSA.List.getCategories();
+        this.documents = [];
     },
 
     initDom: function(){
@@ -51,8 +54,14 @@ window.MSA.Home = MSA.Class({
         $p.on('click', 'li.js-item', function(e){
             e.isPropagationStopped()
             $item = $(this);
-            App.load('detail');
-        })
+
+            var article = that.getArticleById(Number($item.attr('data-id')));
+            if(article != undefined){
+                App.load('detail', {
+                    article: article
+                });
+            }
+        });
         
         $btnMenu.on('touchend', function(e){
             if(that.$listCont.hasClass('move-left')){
@@ -81,6 +90,14 @@ window.MSA.Home = MSA.Class({
                 keyWord: keyWord
             });
         })
+
+        this.$btnDownload.on('click', function(e){
+            that.$mask.show();
+            that.$process.show();
+            that.$processInner.css({
+                width: '20%'
+            });
+        });
         this.loadDocuments();
     },
 
@@ -139,12 +156,22 @@ window.MSA.Home = MSA.Class({
                 $.each(_res, function(i, o){
                     if(o.title){
                         htmlList.push('<li class="js-item" data-id="' + o.id + '">' + o.title + '</li>');
+                        that.documents.push(o);
                     }
                 })
                 that.startIndex += htmlList.length;
                 next(htmlList);
             });
         });
+    },
+
+    getArticleById: function(id){
+        for(var i = 0, len = this.documents.length; i < len; i++){
+            var article = this.documents[i];
+            if(id == article.id){
+                return article;
+            }
+        }
     }
 
 });

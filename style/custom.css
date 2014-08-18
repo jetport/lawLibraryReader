@@ -1,10 +1,29 @@
 
 .app-topbar .app-button.button-search {
-    background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACjElEQVR42r3Wz2sTQRjG8e2maW1rTYIoaPEgHqz/gD+KFi8VRb0pVPTi2UPNQRRCEHpQkCKIp0ilQg/BVqQKUi8q1lRzERQ0x3pQVKJIxTaxpql+DzkMD+xkNo1d+NBudt5535md3VnPdmQyGfP/FrSjC+trOhDxmnxo4k70I4lxzOA18riPYRzFFolvSvJBPMU8/los4w3S8JtRRCfGUZJEK3KuKiigV4pwHzl/43gYkLSKMhZRQsVsZ7T9jN1ShFPyCCahHVbwEiM4gyM4gRQe4Tu04DnskCLqFjACTf4Vg4gHxPo4gCfQ2HyY0e/BvIziIzY7LtgIpqC37YLrLIxJ8AK2SbBLIW+ln29ordfBdryXFZ2Eh7CLuBdVo4gyTmuhGjyA30byOexq5B2CKLIyC7fqBZ6V0U8jagkJ299jtHmWVXxJAsZq1xot4DD+GP3NYqOtgJQUkFllAQMoG/3l9WnSXS4p9yy7ys3suAzoOWK2gJMS8AKJBpP7uCj9PagXtBdFI+AH+mvXwhbQjbzslFfqPYYJ5OQ23IEPD2HeA6dkXyihz6WDFJblNTpkPN+BiWHO5E8ZyCvXytfhiwRXkZa2Qf0cRBG6F+yXWGsRhwL292nsRBei8NGKDmzCZePbQL1DPMw9TGJFR1IzgxtI4yqm8Av6LaDnOfSEmYlzWNKZCKJtAtrnEJcirNvqPnwK6tTyyfbM+F2vF9DmOhPmLfmABSzJVlvBIooYRQIeJiyFFlzXhJ73YQjXMYqbSOEYuqXtBtyTxLomtjrv8a7taswiJiy3bxYxr8mHLmYfWcua6JHQ5hcCP2BN3Eb7/8yva2LSSH4XsbVKbm5413AeCePamhYRRYv52z/AKK4/BRObOQAAAABJRU5ErkJggg==);
+    background-image:url('/images/btn-search-bg.png');
     background-repeat: no-repeat;
     background-position: 12px center;
-    background-size: 16px;
+    background-size: 22px;
 }
+.app-topbar .app-button.button-download {
+    background-image:url('/images/btn-download-bg.png');
+    background-repeat: no-repeat;
+    background-position: 12px center;
+    background-size: 22px;
+    right: 54px;
+}
+
+.app-topbar .app-button.button-confirm-download {
+    padding: 0 2px;
+}
+
+.button-confirm-download span {
+	padding: 8px;
+	background-color: #4486f0;
+	border-radius: 4px;
+	color: #fff;
+}
+
 .button-search.selected {
     background-color: #3366cc;
 }
@@ -44,7 +63,7 @@
 	left: 0;
 	top: 0;
 	color: #444;
-	padding-right: 160px;
+	padding-right: 48px;
 	background-color: white;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -55,4 +74,46 @@
 
 .menu-item.selected {
 	background-color: #ccc;
+}
+
+/*loading*/
+.div-loading {
+	width: 100%;
+	height: 44px;
+	/*text-align: center;*/
+}
+
+.img-loading {
+	height: 16px;
+	width: 16px;
+	margin: 14px auto;
+}
+
+.mask {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0.5;
+	z-index: 3001;
+}
+
+.process-bar {
+	position: absolute;
+	top: 50%;
+	left: 10%;
+	height: 10px;
+	width: 80%;
+	background-color: #ccc;
+	border-radius: 4px;
+	overflow: hidden;
+	z-index: 3002;
+}
+
+.process-bar-inner {
+	width: 80%;
+	height: 100%;
+	background-color: #4486f0;
 }

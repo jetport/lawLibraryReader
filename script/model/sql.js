@@ -482,7 +482,25 @@
 			})
 
 			return deferred;
-		}
+		},
+        download: function(_callback){
+            var deferred = $.Deferred();
+            var start = _param.start || 0,
+                num = _param.num || PAGESIZE
+
+            store.get('downloaded',function(_res){
+                // if(_res && _res.data){// cache hits
+                //  deferred.resolve(_res.data.splice(start, num));
+                // }else{
+                    fetchDocuments(_param,function(_res2){
+                        deferred.resolve(_res2.data.splice(start, num));
+                    });
+                // }
+            })
+
+            return deferred;
+
+        }
 	};
 
 })(window,Zepto);
