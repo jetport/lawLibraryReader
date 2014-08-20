@@ -24,7 +24,7 @@ window.MSA.Home = MSA.Class({
     initData: function(){
         var that = this;
         this.startIndex = 0;
-        this.categoryId = 0;
+        this.categoryId = 743;
         this.documents = [];
     },
 

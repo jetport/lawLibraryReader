@@ -28,14 +28,12 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="app-content">
-                        
-                        <ul class="app-list js-aritcle-list">
-                        </ul>
-                        <div class="div-loading js-loading" align="center">
-                            <img src="images/loading.gif" alt="loading" class="img-loading">
-                        </div>
+                    <ul class="app-list js-aritcle-list">
+                    </ul>
+                    <div class="div-loading js-loading" align="center">
+                        <img src="images/loading.gif" alt="loading" class="img-loading">
+                    </div>
                 </div>
                 <!-- <div class="mask js-mask" style="display:none;">
                             
@@ -86,7 +84,6 @@
                 <div class="app-title"></div>
             </div>
             <div class="app-content">
-
             </div>
         </div>
         <script>
@@ -124,6 +121,31 @@
             } catch (err) {
                 App.load('home');
             }
+            // for test begin
+            sql.download();
+            sql.getDetailById(3328,function(_res){
+                console.log('getDetailById = ');
+                console.log(_res);
+            })
+            sql.listCategory().done(function(_res){
+                console.log('listCategory = ');
+                console.log(_res);
+            })
+            sql.listDocuments({
+                start:0,
+                cat : '123'
+            }).done(function(_res){
+                console.log('listDocuments = ');
+                console.log(_res);
+            })
+            sql.search({
+                start:0,
+                keyword : '法规'
+            }).done(function(_res){
+                console.log('search = ');
+                console.log(_res);
+            })
+            // end
         </script>
     </body>
 </html>
