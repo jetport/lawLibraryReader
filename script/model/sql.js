@@ -22,10 +22,10 @@
 			url:'http://www.nbmsa.gov.cn/api/law_documents/categories/',
 			success : function(_result){
 	        	var me = {key:'categories',data:_result};
+				_callback(me);
+				//
 	        	//TODO strip unused properties
 				store.save(me);
-				//
-				_callback(me);
 			}
 		});
 	}
@@ -40,7 +40,10 @@
 		//no hit
 		$.getJSON('http://www.nbmsa.gov.cn/api/law_documents/documents/',data,function(_res){
 			var ley = 'documents'+data.cat;
+			_callback({key:ley,data:_res});
+			//
 			documentStore.get(ley,function(older){
+				//
 				if(older && older.data){
 					var newer = older;
 				}else{
@@ -66,8 +69,7 @@
 				}catch(e){
 					alert('数据离线失败');
 				}
-				//
-				_callback(_res);
+				
 			})
 		});
 			
@@ -91,6 +93,26 @@
 		);
 		//TODO  search in cache
 	};
+	function getHTMLById(_id){
+		
+		$.getJSON(
+			'http://www.nbmsa.gov.cn/api/law_documents/document/'+_id+'/',
+			{},
+			function(_res){
+				try{
+					var val = {
+						key : ''+_id,
+						data : _res
+					};
+					_callback(val);
+					//
+					detailStore.save(val);
+				}catch(e){
+					alert('数据离线失败');
+				}
+			}
+		);
+	}
 // fetch detail by document id
 	function fetchDetails(_param,_callback){
 		$.ajax({
@@ -100,6 +122,8 @@
 				num : parseInt(_param.num,10) || 20
 			},
 			success : function(_result){
+				_callback && _callback(_result);
+				//
 				for(var i= 0, l = _result.length; i<l; i++){
 					try{
 						var item =_result[i];
@@ -111,8 +135,6 @@
 						alert('数据离线失败');
 					}
 				}
-				//
-				_callback && _callback(_result);
 			}
 		});
 	};
@@ -126,22 +148,32 @@
 			num : MaxLoop
 		});
 	};
-
+	//
 	exports.sql = {
-		getDetailById : function(_id, _callback){
+		getDetailById : function(_id){
+			var deferred = $.Deferred();
+
 			detailStore.get(''+_id,function(_res){
-				_callback(_res);
+				if(_res && _res.data){// cache hits
+					deferred.resolve(_res.data);
+				}else{
+					getHTMLById(_id).done(function(_result){
+						deferred.resolve(_result.data);
+					});
+				}
 			});
+
+			return deferred;
 		},
 		listCategory : function(){
 			var deferred = $.Deferred();
 
 			store.get('categories',function(_res){
-				if(_res){// cache hits
+				if(_res && _res.data){// cache hits
 					deferred.resolve(_res.data);
 				}else{
-					fetchCategorys(function(_res){
-						deferred.resolve(_res.data);
+					fetchCategorys(function(_result){
+						deferred.resolve(_result.data);
 					});
 				}
 			})
@@ -166,7 +198,7 @@
 				}
 				// not hit
 				fetchDocuments(_param,function(_res2){
-					deferred.resolve(_res2);
+					deferred.resolve(_res2.data);
 				});
 			});
 

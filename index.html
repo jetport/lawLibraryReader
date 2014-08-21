@@ -122,29 +122,29 @@
                 App.load('home');
             }
             // for test begin
-            sql.download();
-            sql.getDetailById(3328,function(_res){
-                console.log('getDetailById = ');
-                console.log(_res);
-            })
-            sql.listCategory().done(function(_res){
-                console.log('listCategory = ');
-                console.log(_res);
-            })
-            sql.listDocuments({
-                start:0,
-                cat : '123'
-            }).done(function(_res){
-                console.log('listDocuments = ');
-                console.log(_res);
-            })
-            sql.search({
-                start:0,
-                keyword : '法规'
-            }).done(function(_res){
-                console.log('search = ');
-                console.log(_res);
-            })
+            // sql.download();
+            // sql.getDetailById(3327).done(function(_res){
+            //     console.log('getDetailById = ');
+            //     console.log(_res);
+            // })
+            // sql.listCategory().done(function(_res){
+            //     console.log('listCategory = ');
+            //     console.log(_res);
+            // })
+            // sql.listDocuments({
+            //     start:0,
+            //     cat : '123'
+            // }).done(function(_res){
+            //     console.log('listDocuments = ');
+            //     console.log(_res);
+            // })
+            // sql.search({
+            //     start:0,
+            //     keyword : '法规'
+            // }).done(function(_res){
+            //     console.log('search = ');
+            //     console.log(_res);
+            // })
             // end
         </script>
     </body>
