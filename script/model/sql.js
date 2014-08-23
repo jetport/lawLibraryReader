@@ -5,7 +5,7 @@
 (function(exports,$){
 	var PAGESIZE = 20;
 	// creat a new db
-	var store = new Lawnchair({name:'tb_lawreader'}, function(store) {
+	var store = new Lawnchair({name:'tb_categories'}, function(store) {
         // 预加载 文档分类数据；
         // 保存
         // fetchCategorys(function(_res){
@@ -139,17 +139,7 @@
 		});
 	};
 	//
-
-	function preFetchDetail(){
-		var MaxLoop = 30,
-			stop = false;
-		fetchDetails({
-			start : 0,
-			num : MaxLoop
-		});
-	};
-	//
-	exports.sql = {
+	var sql = {
 		getDetailById : function(_id){
 			var deferred = $.Deferred();
 
@@ -231,5 +221,41 @@
 
         }
 	};
+	//
+	
+	var documentTotal = 0;
+	function preFetchDetail(){
+		// download category
+		var categoryMaps = {};
+		sql.listCategory().done(function(_lst){
+			for (var i = _lst.length - 1; i >= 0; i--) {
+				var item = _lst[i];
+				documentTotal += item.docs_amount;
+				categoryMaps[item.id] = item.docs_amount;
+			}
+		}).then(function(){
+			// download all documents
+			for(i in categoryMaps){
+			    if(categoryMaps.hasOwenProperty(i)){
+					sql.listDocuments({
+						cat : i,
+						start :0,
+						num : categoryMaps[i]
+					}).done(function(){
+
+					})
+			    }
+			}
+			// meanwhile download document's detail
+			var MaxLoop = documentTotal,
+				stop = false;
+			fetchDetails({
+				start : 0,
+				num : MaxLoop,
+			});
+		});
+	};
+	//
+	exports.sql = sql;
 
 })(window,Zepto);
