@@ -3,7 +3,10 @@
  */
 
 (function(exports,$){
-    var PAGESIZE = 20;
+    var PAGESIZE = 20,
+    	gIsDirty = false;
+    	// 是否需要更新
+    var flag = new Lawnchair({name:'tb_flag'}, function(store) { });
     // creat a new db
     var store = new Lawnchair({name:'tb_categories'}, function(store) {
         // 预加载 文档分类数据；
@@ -21,11 +24,45 @@
         $.ajax({
             url:'http://www.nbmsa.gov.cn/api/law_documents/categories/',
             success : function(_result){
-                var me = {key:'categories',data:_result};
+            	var documentCount = 0;
+            	var mix = function(_val){
+            		documentCount += _val.docs_amount;
+            		return {
+                		name : _val.name,
+                		id : _val.id,
+                		docs_amount : _val.docs_amount,
+                		children : []
+                	};
+            	};
+            	var newlist = [];
+            	$.each(_result,function( _index, _val,_this){
+                	newlist.push(mix(_val));
+					// 将多级的数据改为一级
+                	$.each(_val.children,function(_index2, _item2){
+                		newlist.push(mix(_item2));
+                		// Max depth is level2
+                	});
+                });
+                var me = {key:'categories',data: newlist};
                 _callback(me);
                 //
                 //TODO strip unused properties
                 store.save(me);
+                //check dirty
+                flag.get('total',function(_res){
+                	// not reliable
+                	if(_res && _res.data.total!= documentCount){
+                		gIsDirty = true;
+                	}
+                	//
+	                flag.save({
+	                	key:'total',
+	                	data :{
+	                		time : new Date().getTime(),
+	                		total : newlist.length
+	                	}
+	                });
+                });
             }
         });
     }
@@ -40,7 +77,15 @@
         //no hit
         $.getJSON('http://www.nbmsa.gov.cn/api/law_documents/documents/',data,function(_res){
             var ley = 'documents'+data.cat;
-            _callback({key:ley,data:_res});
+            var mixed = $.map(_res,function(_val, _index, _this){
+	                	return {
+	                		id : _val.id,
+	                		title : _val.title,
+	                		tags : _val.tags,
+	                		category : _val.category
+	                	}
+	                });
+            _callback({key:ley,data:mixed});
             //
             documentStore.get(ley,function(older){
                 //
@@ -49,23 +94,13 @@
                 }else{
                     var newer = {key:ley,data:[]};
                 }
-                for(var i= 0, l = _res.length; i<l; i++){
-                    var artice = _res[i];
+                for(var i= 0, l = mixed.length; i<l; i++){
+                    var artice = mixed[i];
                     newer.data[data.start+i] = artice;
-                    // 保存id和content到缓存，如果content存在
-                    if(artice.html_body){
-                        detailStore.save({
-                            key : ''+artice.id,
-                            data : {
-                                id: artice.id,
-                                content : artice.html_body
-                            }
-                        })
-                    }
                 }
                 try{
                     //TODO strip unused properties
-                    store.save(newer);
+                    documentStore.save(newer);
                 }catch(e){
                     alert('数据离线失败');
                 }
@@ -93,6 +128,39 @@
         );
         //TODO  search in cache
     };
+
+    function offlineSearch(_param, _callback){
+    	var data = {
+            start : parseInt(_param.start,10) || 0,
+            num : parseInt(_param.num,10) || PAGESIZE
+        };
+        if(_param.keyword){
+            data.keyword = _param.keyword;
+        }
+        //
+        var def = $.Deferred(),
+        	outs = [];
+        store.get('categories',function(_res){
+        	var lst = _res.data;
+        	var maxLoop = lst.length,
+        		starter = 0 ;
+        	for (var i = maxLoop - 1; i >= 0; i--) {
+        		var category = lst[i];
+        		var ley = 'documents'+category.id;
+        		documentStore.get(ley,function(_res){
+        			// 和tag匹配？
+        			if(_res.tags.indexOf(data.keyword)){
+        				outs.push(_res);
+        			}
+        			starter++;
+        			if(starter > maxLoop){
+        				def.resolve(outs);
+        			}
+        		})
+        	};
+        })
+        return def;
+    }
     function getHTMLById(_id, _callback){
         
         $.getJSON(
@@ -159,7 +227,7 @@
             var deferred = $.Deferred();
 
             store.get('categories',function(_res){
-                if(_res && _res.data){// cache hits
+                if(!navigator.onLine  && _res && _res.data){// cache hits
                     deferred.resolve(_res.data);
                 }else{
                     fetchCategorys(function(_result){
@@ -195,15 +263,18 @@
             return deferred;
         },
         search : function(_param){
-            var deferred = $.Deferred();
-            searchDocuments(_param,function(_res){
-                if(_res){
-                    deferred.resolve(_res);
-                }else{
-                    deferred.resolve([]);
-                }
-            })
+        	if(navigator.onLine ){
+	            var deferred = $.Deferred();
+	            searchDocuments(_param,function(_res){
+	                if(_res){
+	                    deferred.resolve(_res);
+	                }else{
+	                    deferred.resolve([]);
+	                }
+	            })
+        	}else{
 
+        	}
             return deferred;
         },
         download: function(_param, _callback){
@@ -233,8 +304,15 @@
         sql.listCategory().done(function(_lst){
             for (var i = _lst.length - 1; i >= 0; i--) {
                 var item = _lst[i];
-                documentTotal += item.docs_amount;
-                categoryMaps[item.id] = item.docs_amount;
+                if(item.children.length >0 ){//level 2
+                	$.each(function(_index, _item){
+                		documentTotal += _item.docs_amount;
+	                	categoryMaps[_item.id] = _item.docs_amount;
+                	})
+                }else{
+	                documentTotal += item.docs_amount;
+	                categoryMaps[item.id] = item.docs_amount;
+                }
             }
         }).then(preFetchDocuments).done(preFetchDetails);
 
