@@ -94,8 +94,16 @@ window.MSA.Home = MSA.Class({
         this.$btnDownload.on('click', function(e){
             that.$mask.show();
             that.$process.show();
-            that.$processInner.css({
-                width: '20%'
+            sql.download({
+                
+            }, function(percent){
+                that.$processInner.css({
+                    width: percent + '%'
+                });
+                if (percent >= 100) {
+                    that.$mask.hide();
+                    that.$process.hide();
+                };
             });
         });
         this.loadDocuments();

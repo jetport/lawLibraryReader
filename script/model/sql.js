@@ -244,7 +244,7 @@
             // 列表下载比例占总下载量的20%
             var downloadNum = 0;
             for(var i in categoryMaps){
-                if(categoryMaps.hasOwenProperty(i)){
+                if(categoryMaps.hasOwnProperty(i)){
                     if(categoryMaps[i] != 0){
                         (function(j){
                             sql.listDocuments({
@@ -274,10 +274,11 @@
             // meanwhile download document's detail
             var downloadNum = 0;
             var PAGESIZE = 10;
-            for (var i = 0; i < documentTotal; i += PAGESIZE) {
-                (function(){
+            var start = 0;
+            for (var start = 0; start < documentTotal; start += PAGESIZE) {
+                (function(start){
                     fetchDetails({
-                        start : downloadNum,
+                        start : start,
                         num : PAGESIZE,
                     }, function(){
                         downloadNum += PAGESIZE;
@@ -290,7 +291,7 @@
                             deferred.resolve();
                         };
                     });
-                })()
+                })(start);
             };
             return deferred;
         }
