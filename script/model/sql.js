@@ -93,7 +93,7 @@
 		);
 		//TODO  search in cache
 	};
-	function getHTMLById(_id){
+	function getHTMLById(_id, _callback){
 		
 		$.getJSON(
 			'http://www.nbmsa.gov.cn/api/law_documents/document/'+_id+'/',
@@ -157,7 +157,7 @@
 				if(_res && _res.data){// cache hits
 					deferred.resolve(_res.data);
 				}else{
-					getHTMLById(_id).done(function(_result){
+					getHTMLById(_id, function(_result){
 						deferred.resolve(_result.data);
 					});
 				}

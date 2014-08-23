@@ -23,17 +23,11 @@ window.MSA.Detail = MSA.Class({
 
     loadDetail: function(){
     	var that = this;
-    	$.ajax({
-    		url: 'http://www.nbmsa.gov.cn' + this.article.markdown_html_page,
-    		// url: '/test.html',
-    		data: {},
-    		success: function(_res){
-				var pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im
-    			var array_matches = pattern.exec(_res);
-    			that.$appContent.html(array_matches[0]);
-    		},
-    		dataType: 'html'
-    	});
+        sql.getDetailById(this.article.id).done(function(_res){
+            var pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im
+            var array_matches = pattern.exec(_res['markdown_html']);
+            that.$appContent.html(array_matches[1]);
+        });
     }
 });
 App.controller('detail', function (page, args) {
