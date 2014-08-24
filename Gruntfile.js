@@ -34,4 +34,45 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['open','connect']);
 
+  grunt.registerTask('deploy', 'concat and simply', function() {
+    var source = grunt.file.read('index.html');
+    // console.log(source.replace(/\\r\\n/gm,''))
+    var mergeReg = new RegExp('<!--jsmerge:begin:(\\w+).js-->','gmi')
+    var result ,
+        spliceIndex = 0, 
+        targetFile = '';
+    while ((result = mergeReg.exec(source)) != null)  {
+      var start = mergeReg.lastIndex,
+        end = source.indexOf('<!--jsmerge:end:'+RegExp.$1+'.js-->');
+
+        // 截取上一部分
+        targetFile+= source.substring(spliceIndex, start);
+        var jss = (source.substring(start,end));
+        
+        // 插入替换后的js文件
+        targetFile += '\r\n<script src="'+parseAndConcat(jss, RegExp.$1)+'"></script>\r\n'
+        //
+        spliceIndex = end;
+    }
+    // 最后一部分
+    targetFile += source.substring(spliceIndex);
+    grunt.file.write('newIndex.html',targetFile);
+    //
+    grunt.log.write('Logging some stuff...').ok();
+
+    function parseAndConcat(_input, _newname){
+      var result ;
+      var mergeReg = new RegExp('<script src="(.+)"></script>','gmi')
+
+      var content = '';
+      while ((result = mergeReg.exec(_input)) != null)  {
+        // console.log(RegExp.$1)
+        content += grunt.file.read(RegExp.$1);
+      }
+      var newfile = 'dist/'+_newname + '.js'
+      grunt.file.write(newfile,content);
+      return newfile;
+    }
+  });
+
 };
