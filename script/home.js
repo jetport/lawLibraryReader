@@ -16,6 +16,7 @@ window.MSA.Home = MSA.Class({
         this.$mask = this.$p.find('.js-mask');
         this.$process = this.$p.find('.js-process-bar');
         this.$processInner = this.$p.find('.js-process-bar-inner');
+        this.$processText = this.$p.find('.js-process-bar-text');
         this.initData();
         this.initDom();
         this.initEvent();
@@ -100,6 +101,7 @@ window.MSA.Home = MSA.Class({
                 that.$processInner.css({
                     width: percent + '%'
                 });
+                that.$processText.text('正在离线下载：' + percent + '%');
                 if (percent >= 100) {
                     that.$mask.hide();
                     that.$process.hide();
