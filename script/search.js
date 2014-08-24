@@ -6,8 +6,10 @@ window.MSA.Search = MSA.Class({
         this.$articleListCont = this.$p.find('.js-aritcle-list');
         this.$listCont = this.$p.find('.js-list-cont');
         this.$formSearch = this.$p.find('.js-form-search');
+        this.$btnConfirmSearch = this.$p.find('.js-btn-confirm-search');
         this.$iptSearch = this.$p.find('.js-ipt-search');
         this.$loading = this.$p.find('.js-loading');
+        this.$appContent = this.$p.find('.app-content');
         this.initData();
         this.initDom();
         this.initEvent();
@@ -39,6 +41,17 @@ window.MSA.Search = MSA.Class({
                 });
             }
         })
+
+        this.$btnConfirmSearch.on('click', function(){
+            var keyword = that.$iptSearch.val();
+            if(!keyword){
+                alert('请输入关键字！');
+            }else{
+                that.startIndex = 0;
+                that.$articleListCont.html('');
+                that.$appContent.scroll();
+            }
+        })
     },
 
     loadDocuments: function(){
@@ -47,8 +60,8 @@ window.MSA.Search = MSA.Class({
             var params = {
                 start: that.startIndex
             };
-            if(this.keyword){
-                params.keyword = this.keyword;
+            if(that.keyword){
+                params.keyword = that.keyword;
             }
             sql.search(params).done(function(_res){
                 var htmlList = [];

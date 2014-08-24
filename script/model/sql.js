@@ -263,8 +263,8 @@
             return deferred;
         },
         search : function(_param){
-        	if(navigator.onLine ){
-	            var deferred = $.Deferred();
+            var deferred = $.Deferred();
+            if(navigator.onLine ){
 	            searchDocuments(_param,function(_res){
 	                if(_res){
 	                    deferred.resolve(_res);
@@ -273,7 +273,13 @@
 	                }
 	            })
         	}else{
-
+                offlineSearch(_param,function(_res){
+                    if(_res){
+                        deferred.resolve(_res);
+                    }else{
+                        deferred.resolve([]);
+                    }
+                })
         	}
             return deferred;
         },
