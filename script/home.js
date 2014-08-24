@@ -85,11 +85,14 @@ window.MSA.Home = MSA.Class({
         });
 
         this.$btnConfirmSearch.on('click', function(){
-            var keyWord = that.$iptSearch.val();
-
-            App.load('search', {
-                keyWord: keyWord
-            });
+            var keyword = that.$iptSearch.val();
+            if(!keyword){
+                alert('请输入关键字！');
+            }else{
+                App.load('search', {
+                    keyword: keyword
+                });
+            }
         })
 
         this.$btnDownload.on('click', function(e){

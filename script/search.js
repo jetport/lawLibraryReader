@@ -1,7 +1,7 @@
 window.MSA.Search = MSA.Class({
     init: function(data){
         this.page = data.page;
-        this.keyWord = data.data.keyWord;
+        this.keyword = data.data.keyword;
         this.$p = $(this.page);
         this.$articleListCont = this.$p.find('.js-aritcle-list');
         this.$listCont = this.$p.find('.js-list-cont');
@@ -20,7 +20,7 @@ window.MSA.Search = MSA.Class({
     },
 
     initDom: function(){
-        this.$iptSearch.val(this.keyWord);
+        this.$iptSearch.val(this.keyword);
         this.loadDocuments();
     },
 
@@ -47,8 +47,8 @@ window.MSA.Search = MSA.Class({
             var params = {
                 start: that.startIndex
             };
-            if(this.keyWord){
-                params.keyWord = this.keyWord;
+            if(this.keyword){
+                params.keyword = this.keyword;
             }
             sql.search(params).done(function(_res){
                 var htmlList = [];
@@ -78,7 +78,7 @@ App.controller('search', function (page, args) {
     var search = new MSA.Search({
         page: page,
         data: {
-            keyWord: args.keyWord
+            keyword: args.keyword
         }
     });
 });

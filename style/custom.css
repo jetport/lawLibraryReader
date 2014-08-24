@@ -261,4 +261,6 @@
 #page-detail .doc-date {
 	text-align: center;
 	margin-bottom: 16px;
+	font-size: 12px;
+	color: #999;
 }
