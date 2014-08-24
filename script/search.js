@@ -54,7 +54,7 @@ window.MSA.Search = MSA.Class({
                 var htmlList = [];
                 $.each(_res, function(i, o){
                     if(o.title){
-                        htmlList.push('<li class="js-item" data-id="' + o.id + '">' + o.title + '</li>');
+                        htmlList.push('<li class="js-item" data-id="' + o.id + '"><div class="doc-title">' + o.title + '</div><div class="doc-date">颁布日期：' + (o.publish_date || '-') + '</div></li>');
                         that.documents.push(o);
                     }
                 });

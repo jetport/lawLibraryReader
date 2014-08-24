@@ -34,6 +34,29 @@
 	width: 44px;
 }
 
+.app-topbar .app-title {
+	width: auto;
+	padding: 0 88px;
+}
+
+.app-topbar.detail-topbar .app-title {
+	padding: 0 44px;
+}
+/*
+.app-topbar .button-back {
+
+}*/
+
+.app-topbar .app-button[data-back].left {
+	padding: 0;
+	width: 44px;
+	height: 44px;
+	background-image: url('/images/btn-back-bg.png');
+	background-repeat: no-repeat;
+	background-position: 0px center;
+	background-size: 44px;
+}
+
 /*
 	详情页
  */
@@ -65,15 +88,15 @@
     right: 54px;
 }
 
-.app-topbar .app-button.button-confirm-download {
+.app-topbar .app-button.button-confirm-search {
     padding: 0 2px;
+    width: 70px;
 }
 
-.button-confirm-download span {
-	padding: 8px;
-	background-color: #4486f0;
+.button-confirm-search span {
+	padding: 8px 8px 8px 20px;
 	border-radius: 4px;
-	color: #fff;
+	color: #4486f0;
 }
 
 .button-search.selected {
@@ -114,7 +137,7 @@
 	left: 0;
 	top: 0;
 	color: #444;
-	padding-right: 48px;
+	padding-right: 70px;
 	background-color: white;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -191,8 +214,51 @@
 .app-list li.menu-title {
 	text-align: center;
 	color: #2089e4;
+	padding-left: 0px;	
+	padding-right: 0px;
 }
 
 .app-list li.menu-item {
 	font-size: 18px;
+}
+
+.app-topbar .app-button[data-back].left {
+	padding: 0;
+	width: 44px;
+	height: 44px;
+}
+
+/*搜索框*/
+.app-input[type="search"] {
+	padding: 8px;
+	background-image: none;
+}
+
+.form-search input.app-input{
+	height: 34px;
+	background-color: #f8f8f8;
+	border: 1px solid #d0d0d0;
+	border-radius: 3px;
+}
+
+.cont-input-search {
+	padding: 5px 5px 5px 18px;
+}
+
+
+/*
+	详情页
+ */
+#page-detail .app-content{
+	padding: 16px 16px 0;
+}
+
+#page-detail .app-content p {
+	font-size: 16px;
+	line-height: 28px;
+}
+
+#page-detail .doc-date {
+	text-align: center;
+	margin-bottom: 16px;
 }

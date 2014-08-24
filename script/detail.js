@@ -4,6 +4,9 @@ window.MSA.Detail = MSA.Class({
         this.article = data.article;
         this.$p = $(this.page);
         this.$appContent = this.$p.find('.app-content');
+        this.$topBar = this.$p.find('.app-topbar');
+        this.$topBar.addClass('detail-topbar');
+        this.$title = this.$p.find('.app-title');
         this.initData();
         this.initDom();
         this.initEvent();
@@ -14,7 +17,8 @@ window.MSA.Detail = MSA.Class({
     },
 
     initDom: function(){
-    	this.loadDetail();
+        this.$title.text(this.article.title);
+        this.loadDetail();
     },
 
     initEvent: function(){
@@ -25,8 +29,9 @@ window.MSA.Detail = MSA.Class({
     	var that = this;
         sql.getDetailById(this.article.id).done(function(_res){
             var pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im
-            var array_matches = pattern.exec(_res['markdown_html']);
-            that.$appContent.html(array_matches[1]);
+            var array_matches = pattern.exec(_res['content']);
+            var html = '<div class="doc-date">' + (that.article['publish_date']|| '-') + '</div>'
+            that.$appContent.html(html + array_matches[1]);
         });
     }
 });

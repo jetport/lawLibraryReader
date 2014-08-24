@@ -10,7 +10,7 @@
     </head>
 
     <body>
-        <div class="app-page" data-page="home">
+        <div id="page-home" class="app-page" data-page="home">
             
             <div class="list-cont js-list-cont">
                 <div class="app-topbar blue">
@@ -19,11 +19,11 @@
                     <div class="app-button app-button-icon right button-download js-btn-download">&nbsp;</div>
                     <div class="app-button app-button-icon right button-search js-btn-search">&nbsp;</div>
                     <div class="form-search js-form-search" action="" style="display:none;">
-                        <div>
-                            <input class="app-input js-ipt-search" type="search" placeholder="搜索...">
+                        <div class="cont-input-search">
+                            <input class="app-input js-ipt-search" type="search" placeholder="请输入关键字">
                             <input type="submit" style="display:none">
                         </div>
-                        <div class="app-button right button-confirm-download js-btn-confirm-search">
+                        <div class="app-button right button-confirm-search js-btn-confirm-search">
                             <span>搜索</span>
                         </div>
                     </div>
@@ -50,18 +50,17 @@
             </div>
         </div>
 
-        <div class="app-page" data-page="search">
-            
+        <div id="page-search" class="app-page" data-page="search">
             <div class="list-cont js-list-cont">
                 <div class="app-topbar blue">
-                    <div class="app-button left" data-back>返回</div>
+                    <div class="app-button app-button-icon button-back left" data-back></div>
                     <div class="app-title">搜索结果</div>
-                    <div class="form-search js-form-search">
-                        <div>
-                            <input class="app-input js-ipt-search" type="search" placeholder="搜索...">
+                    <div class="form-search js-form-search" action="">
+                        <div class="cont-input-search">
+                            <input class="app-input js-ipt-search" type="search" placeholder="请输入关键字">
                             <input type="submit" style="display:none">
                         </div>
-                        <div class="app-button right button-confirm-download js-btn-confirm-search">
+                        <div class="app-button right button-confirm-search js-btn-confirm-search">
                             <span>搜索</span>
                         </div>
                     </div>
@@ -77,9 +76,9 @@
             </div>
         </div>
 
-        <div class="app-page" data-page="detail">
+        <div id="page-detail" class="app-page" data-page="detail">
             <div class="app-topbar blue">
-                <div class="app-button left" data-back>返回</div>
+                <div class="app-button app-button-icon button-back left" data-back></div>
                 <div class="app-title"></div>
             </div>
             <div class="app-content">
@@ -120,31 +119,6 @@
             } catch (err) {
                 App.load('home');
             }
-            // for test begin
-            // sql.download();
-            // sql.getDetailById(3327).done(function(_res){
-            //     console.log('getDetailById = ');
-            //     console.log(_res);
-            // })
-            // sql.listCategory().done(function(_res){
-            //     console.log('listCategory = ');
-            //     console.log(_res);
-            // })
-            // sql.listDocuments({
-            //     start:0,
-            //     cat : '123'
-            // }).done(function(_res){
-            //     console.log('listDocuments = ');
-            //     console.log(_res);
-            // })
-            // sql.search({
-            //     start:0,
-            //     keyword : '法规'
-            // }).done(function(_res){
-            //     console.log('search = ');
-            //     console.log(_res);
-            // })
-            // end
         </script>
     </body>
 </html>
