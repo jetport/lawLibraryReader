@@ -76,10 +76,10 @@ window.MSA.Home = MSA.Class({
             var $this = $(this);
             var categoryName = $(this).text();
             var categoryId = $(this).attr('data-id');
-            that.$categoryListCont.find('.menu-item.selected').removeClass('selected');
+            that.$categoryListCont.find('.js-menu-item.selected').removeClass('selected');
             $this.addClass('selected');
             that.$listCont.removeClass('move-left');
-            that.$p.find('.app-title').text(categoryName);
+            // that.$p.find('.app-title').text(categoryName);
             that.showArticlesForCategory(categoryId);
         });
 
@@ -95,7 +95,7 @@ window.MSA.Home = MSA.Class({
             that.$mask.show();
             that.$process.show();
             sql.download({
-                
+
             }, function(percent){
                 that.$processInner.css({
                     width: percent + '%'
@@ -128,6 +128,8 @@ window.MSA.Home = MSA.Class({
             }
             return list;
         }
+
+        that.$categoryListCont.append('<li class="menu-item menu-title">分类</li><li class="menu-item js-menu-item selected" data-index="-1" data-id="0">所有类别</li>');
 
         sql.listCategory().done(function(_res){
             that.categories = getCategoryItems(_res);
@@ -163,7 +165,7 @@ window.MSA.Home = MSA.Class({
                 var htmlList = [];
                 $.each(_res, function(i, o){
                     if(o.title){
-                        htmlList.push('<li class="js-item" data-id="' + o.id + '">' + o.title + '</li>');
+                        htmlList.push('<li class="js-item" data-id="' + o.id + '"><div class="doc-title">' + o.title + '</div><div class="doc-date">颁布日期：' + (o.publish_date || '-') + '</div></li>');
                         that.documents.push(o);
                     }
                 })
