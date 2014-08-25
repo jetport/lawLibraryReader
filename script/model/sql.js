@@ -81,7 +81,6 @@
 	                	return {
 	                		id : _val.id,
 	                		title : _val.title,
-	                		tags : _val.tags,
 	                		category : _val.category
 	                	}
 	                });
@@ -148,8 +147,7 @@
         		var category = lst[i];
         		var ley = 'documents'+category.id;
         		documentStore.get(ley,function(_res){
-        			// 和tag匹配？
-        			if(_res.tags.indexOf(data.keyword)){
+        			if(_res.title.indexOf(data.keyword)>-1){
         				outs.push(_res);
         			}
         			starter++;
