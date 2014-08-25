@@ -244,7 +244,7 @@
             var deferred = $.Deferred();
             var start = _param.start || 0,
                 num = _param.num || PAGESIZE
-            store.get('documents'+_param.cat,function(older){
+            documentStore.get('documents'+_param.cat,function(older){
                 if(older && older.data){
                     var outs = older.data.slice(start,start+num);
                     if(outs[0] && outs[num-1]){//cache hits
@@ -343,7 +343,7 @@
                 if(categoryMaps.hasOwnProperty(i)){
                     if(categoryMaps[i] != 0){
                         // add queue;
-                        queue(function(j,categoryMaps,downloadNum,documentTotal,_callback,deferred){
+                        queue(function(j){
                             sql.listDocuments({
                                 cat : j,
                                 start :0,
@@ -361,10 +361,12 @@
                                 // call next
                                 next()
                             })
-                        },null,[i,categoryMaps,downloadNum,documentTotal,_callback,deferred]);
+                        },null,[i]);
                     }
                 }
             }
+            // start queue
+            next();
             return deferred;
         }
 
@@ -375,7 +377,7 @@
             var start = 0;
             for (var start = 0; start < documentTotal; start += PAGESIZE) {
                 // add queue;
-                queue(function(start,downloadNum,documentTotal,_callback,deferred){
+                queue(function(start){
                     fetchDetails({
                         start : start,
                         num : PAGESIZE,
@@ -389,9 +391,12 @@
                         if (downloadNum >= documentTotal) {
                             deferred.resolve();
                         };
+                        // call next
+                        next()
                     });
-                },null,[start,downloadNum,documentTotal,_callback,deferred]);
+                },null,[start]);
             };
+            //
             return deferred;
         }
     };
