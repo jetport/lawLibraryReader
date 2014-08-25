@@ -1,16 +1,44 @@
 CACHE MANIFEST
-# v1 2014-08-24
+# v1 2014-08-24 22:44
 # This is another comment
-index.html
 style/app.min.css
 style/custom.css
 style/base.css
+
+images/btn-back-bg.png
+images/btn-download-bg.png
+images/btn-menu-bg.png
+images/btn-search-bg.png
+images/go-detail-icon.png
+images/loading.gif
+images/process-bar-bg.png
+
+bower_components/zeptojs/src/zepto.js
+bower_components/zeptojs/src/event.js
+bower_components/zeptojs/src/touch.js
+bower_components/zeptojs/src/callbacks.js
+bower_components/zeptojs/src/deferred.js
+bower_components/zeptojs/src/selector.js
+bower_components/zeptojs/src/ie.js
+bower_components/zeptojs/src/detect.js
+bower_components/zeptojs/src/ajax.js
+bower_components/appjs/dist/app.min.js
+
+bower_components/lawnchair/src/Lawnchair.js
+bower_components/lawnchair/src/adapters/dom.js
+bower_components/lawnchair/src/adapters/memory.js
+bower_components/lawnchair/src/adapters/blackberry-persistent-storage.js
+bower_components/lawnchair/src/adapters/gears-sqlite.js
+bower_components/lawnchair/src/adapters/ie-userdata.js
+bower_components/lawnchair/src/adapters/indexed-db.js
+bower_components/lawnchair/src/adapters/webkit-sqlite.js
+
 script/base.js
-script/detail.js
+script/model/sql.js
 script/home.js
 script/search.js
+script/detail.js
 script/web/list.js
-script/model/sql.js
 
 # Use from network if available
 NETWORK:

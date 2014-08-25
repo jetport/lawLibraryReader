@@ -1,0 +1,19 @@
+CACHE MANIFEST
+# v1 2014-08-24
+# This is another comment
+index.html
+style/app.min.css
+style/custom.css
+style/base.css
+script/base.js
+script/detail.js
+script/home.js
+script/search.js
+script/web/list.js
+script/model/sql.js
+
+# Use from network if available
+NETWORK:
+
+# Fallback content
+FALLBACK:

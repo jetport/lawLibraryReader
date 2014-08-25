@@ -16,7 +16,7 @@
 
 .app-content .app-list>li {
 	background-color: #f2f2f2;
-	background-image: url('/images/go-detail-icon.png');
+	background-image: url('../images/go-detail-icon.png');
 	background-repeat:no-repeat;
 	background-position: right center;
 	background-size: 27px 55px;
@@ -51,7 +51,7 @@
 	padding: 0;
 	width: 44px;
 	height: 44px;
-	background-image: url('/images/btn-back-bg.png');
+	background-image: url('../images/btn-back-bg.png');
 	background-repeat: no-repeat;
 	background-position: 0px center;
 	background-size: 44px;
@@ -75,13 +75,13 @@
 }
 
 .app-topbar .app-button.button-search {
-    background-image:url('/images/btn-search-bg.png');
+    background-image:url('../images/btn-search-bg.png');
     background-repeat: no-repeat;
     background-position: 0px center;
     background-size: 44px;
 }
 .app-topbar .app-button.button-download {
-    background-image:url('/images/btn-download-bg.png');
+    background-image:url('../images/btn-download-bg.png');
     background-repeat: no-repeat;
     background-position: 0px center;
     background-size: 44px;
@@ -104,7 +104,7 @@
 }
 
 .app-topbar .app-button.button-menu {
-	background-image: url('/images/btn-menu-bg.png');
+	background-image: url('../images/btn-menu-bg.png');
 	background-repeat: no-repeat;
 	background-position: 0px center;
 	background-size: 44px;
@@ -180,7 +180,7 @@
 	background-color: #000;
 	overflow: hidden;
 	z-index: 3002;
-	background-image: ('/images/process-bar-bg.png');
+	background-image: ('../images/process-bar-bg.png');
 	background-repeat: repeat-x;
 	background-size: 100% 20px;
 }
