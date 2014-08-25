@@ -299,8 +299,22 @@
 
         }
     };
-    //
-    
+    // 异步请求的排队功能
+    var reqs = [];
+    function queue(_func, _this, _argArray){
+        reqs.push({
+            func : _func,
+            self : _this,
+            args : _argArray
+        });
+    }
+    function next(){
+        var req = reqs.pop();
+        if(req && typeof req.func == 'function'){
+            req.func.apply(req.self,req.args);
+        }
+    }
+
     var documentTotal = 0;
     function preFetch(_callback){
         // download category
@@ -328,7 +342,8 @@
             for(var i in categoryMaps){
                 if(categoryMaps.hasOwnProperty(i)){
                     if(categoryMaps[i] != 0){
-                        (function(j){
+                        // add queue;
+                        queue(function(j,categoryMaps,downloadNum,documentTotal,_callback,deferred){
                             sql.listDocuments({
                                 cat : j,
                                 start :0,
@@ -343,8 +358,10 @@
                                 if (downloadNum >= documentTotal) {
                                     deferred.resolve();
                                 };
+                                // call next
+                                next()
                             })
-                        })(i);
+                        },null,[i,categoryMaps,downloadNum,documentTotal,_callback,deferred]);
                     }
                 }
             }
@@ -355,10 +372,10 @@
             var deferred = $.Deferred();
             // meanwhile download document's detail
             var downloadNum = 0;
-            var PAGESIZE = 10;
             var start = 0;
             for (var start = 0; start < documentTotal; start += PAGESIZE) {
-                (function(start){
+                // add queue;
+                queue(function(start,downloadNum,documentTotal,_callback,deferred){
                     fetchDetails({
                         start : start,
                         num : PAGESIZE,
@@ -373,7 +390,7 @@
                             deferred.resolve();
                         };
                     });
-                })(start);
+                },null,[start,downloadNum,documentTotal,_callback,deferred]);
             };
             return deferred;
         }
