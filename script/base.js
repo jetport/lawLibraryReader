@@ -171,4 +171,4 @@
 			Sub.prototype[key] = ext[key];
 		};
 	};*/
-})()
+})();

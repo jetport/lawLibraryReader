@@ -47,9 +47,13 @@ window.MSA.Search = MSA.Class({
             if(!keyword){
                 alert('请输入关键字！');
             }else{
+                that.keyword = keyword;
                 that.startIndex = 0;
-                that.$articleListCont.html('');
-                that.$appContent.scroll();
+                // that.$articleListCont.html('');
+                that.$articleListCont.after('<ul class="app-list js-aritcle-list"></ul>').remove();
+                that.$articleListCont = that.$p.find('.js-aritcle-list');
+                // that.$appContent.scroll();
+                that.loadDocuments();
             }
         })
     },

@@ -150,11 +150,13 @@ window.MSA.Home = MSA.Class({
         var that = this;
         that.categoryId = categoryId;
         that.startIndex = 0;
-        that.$articleListCont.html('');
+        that.$articleListCont.after('<ul class="app-list js-aritcle-list"></ul>').remove();
+        that.$articleListCont = this.$p.find('.js-aritcle-list');
         that.$formSearch.hide();
         that.$iptSearch.val('');
         that.$btnSearch.removeClass('selected');
-        that.$appContent.scroll();
+        that.loadDocuments();
+        // that.$appContent.scroll();
     },
 
     loadDocuments: function(){
