@@ -158,7 +158,7 @@
                     			}
                     			starter++;
                     			if(i == 0 && j==0){
-                    				def.resolve(outs.slice(start, start + num));
+                    				def.resolve(outs.slice(data.start, data.start + data.num));
                     			}
                             };
                         }
