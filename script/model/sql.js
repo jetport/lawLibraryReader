@@ -158,7 +158,7 @@
                     			}
                     			starter++;
                     			if(i == 0 && j==0){
-                    				def.resolve(outs);
+                    				def.resolve(outs.slice(start, start + num));
                     			}
                             };
                         }
@@ -207,9 +207,12 @@
                             data : item
                         });
                     }catch(e){
-                        alert('数据离线失败');
+                        alert('离线保存失败');
                     }
                 }
+            },
+            error: function(){
+                _callback && _callback([]);
             }
         });
     };
@@ -312,7 +315,7 @@
         });
     }
     function next(){
-        var req = reqs.pop();
+        var req = reqs.shift();
         if(req && typeof req.func == 'function'){
             req.func.apply(req.self,req.args);
         }
@@ -383,10 +386,10 @@
                 queue(function(start){
                     fetchDetails({
                         start : start,
-                        num : PAGESIZE,
-                    }, function(){
+                        num : PAGESIZE
+                    }, function(_res){
                         downloadNum += PAGESIZE;
-                        var percent = parseInt(downloadNum * 100 * 0.2 / documentTotal,10) + 20;
+                        var percent = parseInt(downloadNum * 100 * 0.8 / documentTotal,10) + 20;
                         if (_callback) {
                             _callback(percent);
                         };
