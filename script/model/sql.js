@@ -141,20 +141,29 @@
         	outs = [];
         store.get('categories',function(_res){
         	var lst = _res.data;
-        	var maxLoop = lst.length,
-        		starter = 0 ;
-        	for (var i = maxLoop - 1; i >= 0; i--) {
-        		var category = lst[i];
+        	var starter = 0 ;
+        	for (var i = lst.length - 1; i >= 0; i--) {
+                var category = lst[i];
+                // var maxLoop += category.docs_amount;
         		var ley = 'documents'+category.id;
-        		documentStore.get(ley,function(_res){
-        			if(_res.title.indexOf(data.keyword)>-1){
-        				outs.push(_res);
-        			}
-        			starter++;
-        			if(starter > maxLoop){
-        				def.resolve(outs);
-        			}
-        		})
+                !function(i){
+            		documentStore.get(ley,function(_res2){
+                        if(_res2){
+                            var lst = _res2.data;
+                            for (var j = lst.length - 1; j >= 0; j--) {
+                                var item = lst[j];
+                    			if(item.title.indexOf(data.keyword)>-1){
+                    				outs.push(item);
+                                    // console.log(item);
+                    			}
+                    			starter++;
+                    			if(i == 0 && j==0){
+                    				def.resolve(outs);
+                    			}
+                            };
+                        }
+            		})
+                }(i)
         	};
         })
         return def;
@@ -261,8 +270,8 @@
             return deferred;
         },
         search : function(_param){
-            var deferred = $.Deferred();
             if(navigator.onLine ){
+                var deferred = $.Deferred();
 	            searchDocuments(_param,function(_res){
 	                if(_res){
 	                    deferred.resolve(_res);
@@ -270,16 +279,10 @@
 	                    deferred.resolve([]);
 	                }
 	            })
+                return deferred;
         	}else{
-                offlineSearch(_param,function(_res){
-                    if(_res){
-                        deferred.resolve(_res);
-                    }else{
-                        deferred.resolve([]);
-                    }
-                })
+                return offlineSearch(_param);
         	}
-            return deferred;
         },
         download: function(_param, _callback){
             var param = _param || {};
