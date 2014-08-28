@@ -141,7 +141,6 @@
         	outs = [];
         store.get('categories',function(_res){
         	var lst = _res.data;
-        	var starter = 0 ;
         	for (var i = lst.length - 1; i >= 0; i--) {
                 var category = lst[i];
                 // var maxLoop += category.docs_amount;
@@ -156,7 +155,6 @@
                     				outs.push(item);
                                     // console.log(item);
                     			}
-                    			starter++;
                     			if(i == 0 && j==0){
                     				def.resolve(outs.slice(data.start, data.start + data.num));
                     			}
